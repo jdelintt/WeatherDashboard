@@ -6,13 +6,14 @@ $(document).ready(function () {
     var cityParamUrl =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       cityParam +
-      "&appid=927924e4c73455c7286d71a6b1b45a4c";
+      "&appid=927924e4c73455c7286d71a6b1b45a4c&count=5";
 
     //   First ajax call for weather API
     $.ajax({
       url: cityParamUrl,
       method: "GET",
     }).then((response) => {
+      console.log(response);
       var ptagtemp = $("<p>");
       var ptaghumidity = $("<p>");
       var ptagwind = $("<p>");
@@ -40,6 +41,16 @@ $(document).ready(function () {
       }).then((response) => {
         console.log(response);
         var ptag;
+        var urlFiveDay =
+          "http://api.openweathermap.org/data/2.5/forecast?q=" +
+          cityParam +
+          "&appid=927924e4c73455c7286d71a6b1b45a4c";
+        $.ajax({
+          url: urlFiveDay,
+          method: "GET",
+        }).then((response) => {
+          console.log(response);
+        });
       });
     });
   });
