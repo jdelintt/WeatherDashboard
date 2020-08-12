@@ -13,12 +13,16 @@ $(document).ready(function () {
       url: cityParamUrl,
       method: "GET",
     }).then((response) => {
-      var ptag = $("<p>");
+      var ptagtemp = $("<p>");
+      var ptaghumidity = $("<p>");
+      var ptagwind = $("<p>");
       var temperature = response.main.temp;
       var humidity = response.main.humidity;
       var windSpeed = response.wind.speed;
-      ptag.append(temperature, humidity, windSpeed);
-      $(".appendweather").append(ptag);
+      ptagtemp.append("Temperature is " + temperature + " F");
+      ptaghumidity.append(humidity + "%");
+      ptagwind.append(windSpeed + " MPH");
+      $(".appendweather").append(ptagtemp, ptaghumidity, ptagwind);
       var lat = response.coord.lat;
       var long = response.coord.lon;
 
@@ -32,6 +36,7 @@ $(document).ready(function () {
         method: "GET",
       }).then((response) => {
         console.log(response);
+        var ptag;
       });
     });
   });
