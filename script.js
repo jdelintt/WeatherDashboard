@@ -18,7 +18,7 @@ $(document).ready(function () {
       var humidity = response.main.humidity;
       var windSpeed = response.wind.speed;
       ptag.append(temperature, humidity, windSpeed);
-      $(".citylist").append(ptag);
+      $(".appendweather").append(ptag);
       var lat = response.coord.lat;
       var long = response.coord.lon;
 
