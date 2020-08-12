@@ -11,7 +11,7 @@ $(document).ready(function () {
       url: cityParamUrl,
       method: "GET",
     }).then((response) => {
-      console.log(response);
+      console.log(response.main.temp);
     });
   });
 });
