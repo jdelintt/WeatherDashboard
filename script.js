@@ -12,6 +12,9 @@ $(document).ready(function () {
       method: "GET",
     }).then((response) => {
       console.log(response.main.temp);
+      console.log(response);
+      console.log(response.main.humidity);
+      console.log(response.wind.speed);
     });
   });
 });
