@@ -17,10 +17,13 @@ $(document).ready(function () {
       var ptaghumidity = $("<p>");
       var ptagwind = $("<p>");
       var temperature = response.main.temp;
+      temperature = temperature - 273;
+      temperature = temperature * (9 / 5);
+      temperature = Math.floor(temperature + 32);
       var humidity = response.main.humidity;
       var windSpeed = response.wind.speed;
       ptagtemp.append("Temperature is " + temperature + " F");
-      ptaghumidity.append(humidity + "%");
+      ptaghumidity.append("Humidity: " + humidity + "%");
       ptagwind.append(windSpeed + " MPH");
       $(".appendweather").append(ptagtemp, ptaghumidity, ptagwind);
       var lat = response.coord.lat;
