@@ -40,15 +40,32 @@ $(document).ready(function () {
         method: "GET",
       }).then((response) => {
         console.log(response);
-        var ptag;
+        var ptagUVI = $("<p>");
+        ptagUVI.append("UVI:" + response.value);
+        $(".appendweather").append(ptagUVI);
+
         var urlFiveDay =
-          "http://api.openweathermap.org/data/2.5/forecast?q=" +
-          cityParam +
-          "&cnt=5&appid=927924e4c73455c7286d71a6b1b45a4c";
+          "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+          lat +
+          "&lon=" +
+          long +
+          "&appid=927924e4c73455c7286d71a6b1b45a4c";
         $.ajax({
           url: urlFiveDay,
           method: "GET",
         }).then((response) => {
+          for (let i = 0; i < response.daily.length; i++) {
+            var ptag = $("<p>");
+            // var date = "Today's date is:" + response.daily[i].temp.day;
+            var temp = response.daily[i].temp.day;
+            temp = temp - 273;
+            temp = temp * (9 / 5);
+            temp = "Temp: " + Math.floor(temp + 32);
+            var humidity = "Humidity: " + response.daily[i].humidity;
+
+            ptag.append(temp, humidity);
+            $(".five-day-forecast").append(ptag);
+          }
           console.log(response);
         });
       });
