@@ -44,7 +44,7 @@ $(document).ready(function () {
         var urlFiveDay =
           "http://api.openweathermap.org/data/2.5/forecast?q=" +
           cityParam +
-          "&appid=927924e4c73455c7286d71a6b1b45a4c";
+          "&cnt=5&appid=927924e4c73455c7286d71a6b1b45a4c";
         $.ajax({
           url: urlFiveDay,
           method: "GET",
