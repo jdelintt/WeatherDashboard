@@ -3,6 +3,10 @@ $(document).ready(function () {
   $(".start-search").on("click", function () {
     console.log($("#citysearch").val());
     var cityParam = $("#citysearch").val();
+    var weatherBtn = $("<button>");
+    weatherBtn.append(cityParam);
+    weatherBtn.attr("text", cityParam);
+    $(".citylist").append(weatherBtn);
     var cityParamUrl =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       cityParam +
