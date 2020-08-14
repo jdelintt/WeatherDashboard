@@ -121,7 +121,6 @@ $(document).ready(function () {
               divBody.append(pTagTemp, pTagHum);
               $(".five-day-forecast").append(divTag);
             }
-            console.log(response);
           });
         });
       })
