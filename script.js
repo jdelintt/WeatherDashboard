@@ -87,7 +87,12 @@ $(document).ready(function () {
             method: "GET",
           }).then((response) => {
             for (let i = 0; i < response.daily.length; i++) {
-              var ptag = $("<p>");
+              var divTag = $("<div>");
+              divTag.addClass("card");
+              divTag.attr("style", "width: 18rem;");
+              var divBody = $("<div>");
+              divBody.addClass("card-body");
+              divTag.append(divBody);
               // var date = "Today's date is:" + response.daily[i].temp.day;
               var temp = response.daily[i].temp.day;
               temp = temp - 273;
@@ -95,8 +100,8 @@ $(document).ready(function () {
               temp = "Temp: " + Math.floor(temp + 32);
               var humidity = "Humidity: " + response.daily[i].humidity;
 
-              ptag.append(temp, humidity);
-              $(".five-day-forecast").append(ptag);
+              divBody.append(temp, humidity);
+              $(".five-day-forecast").append(divTag);
             }
             console.log(response);
           });
