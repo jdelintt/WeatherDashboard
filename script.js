@@ -41,6 +41,8 @@ $(document).ready(function () {
         renderSearchHistory();
 
         console.log(response);
+        var header = $("<h1>");
+        header.text(response.name);
         var ptagtemp = $("<p>");
         var ptaghumidity = $("<p>");
         var ptagwind = $("<p>");
@@ -53,7 +55,8 @@ $(document).ready(function () {
         ptagtemp.append("Temperature is " + temperature + " F");
         ptaghumidity.append("Humidity: " + humidity + "%");
         ptagwind.append(windSpeed + " MPH");
-        $(".appendweather").append(ptagtemp, ptaghumidity, ptagwind);
+        header.append(ptagtemp, ptaghumidity, ptagwind);
+        $(".appendweather").append(header);
         var lat = response.coord.lat;
         var long = response.coord.lon;
 
@@ -87,6 +90,8 @@ $(document).ready(function () {
             method: "GET",
           }).then((response) => {
             for (let i = 0; i < response.daily.length; i++) {
+              var pTagTemp = $("<p>");
+              var pTagHum = $("<p>");
               var divTag = $("<div>");
               divTag.addClass("card");
               divTag.attr("style", "width: 18rem;");
@@ -99,8 +104,10 @@ $(document).ready(function () {
               temp = temp * (9 / 5);
               temp = "Temp: " + Math.floor(temp + 32);
               var humidity = "Humidity: " + response.daily[i].humidity;
+              pTagTemp.append(temp);
+              pTagHum.append(humidity);
 
-              divBody.append(temp, humidity);
+              divBody.append(pTagTemp, pTagHum);
               $(".five-day-forecast").append(divTag);
             }
             console.log(response);
