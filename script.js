@@ -43,7 +43,8 @@ $(document).ready(function () {
         console.log(response);
         var date = $("<h1>");
         var todaysDate = moment().format("MMM Do YY");
-        console.log(todaysDate);
+        date.append(todaysDate);
+
         var header = $("<h2>");
         header.text(response.name);
         var ptagtemp = $("<p>");
@@ -59,7 +60,7 @@ $(document).ready(function () {
         ptaghumidity.append("Humidity: " + humidity + "%");
         ptagwind.append(windSpeed + " MPH");
         header.append(ptagtemp, ptaghumidity, ptagwind);
-        $(".appendweather").append(header);
+        $(".appendweather").append(todaysDate, header);
         var lat = response.coord.lat;
         var long = response.coord.lon;
 
