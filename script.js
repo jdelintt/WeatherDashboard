@@ -41,7 +41,10 @@ $(document).ready(function () {
         renderSearchHistory();
 
         console.log(response);
-        var header = $("<h1>");
+        var date = $("<h1>");
+        var todaysDate = moment().format("MMM Do YY");
+        console.log(todaysDate);
+        var header = $("<h2>");
         header.text(response.name);
         var ptagtemp = $("<p>");
         var ptaghumidity = $("<p>");
@@ -72,9 +75,16 @@ $(document).ready(function () {
           method: "GET",
         }).then((response) => {
           console.log(response);
-          var ptagUVI = $("<p>");
-          ptagUVI.append("UVI:" + response.value);
-          $(".appendweather").append(ptagUVI);
+          var divtagUVI = $("<div>");
+          divtagUVI.attr("id", "change-color");
+          divtagUVI.append("UVI:" + response.value);
+          $(".appendweather").append(divtagUVI);
+          var uvNum = response.value;
+          if (uvNum > 10) {
+            divtagUVI.addClass("bg-danger");
+          } else if (uvNum > 7) {
+            divtagUVI.addClass("bg-warning");
+          } else divtagUVI.addClass("bg-success");
 
           var urlFiveDay =
             "https://api.openweathermap.org/data/2.5/onecall?lat=" +
@@ -93,7 +103,7 @@ $(document).ready(function () {
               var pTagTemp = $("<p>");
               var pTagHum = $("<p>");
               var divTag = $("<div>");
-              divTag.addClass("card");
+              divTag.addClass("card col-3-md");
               divTag.attr("style", "width: 18rem;");
               var divBody = $("<div>");
               divBody.addClass("card-body");
