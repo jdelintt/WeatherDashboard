@@ -36,7 +36,11 @@
           <div class="col-md-3">
             <h2>Search by City</h2>
             <input type="text" id="citysearch" name="fname" />
-            <button type="button" class="btn btn-primary btn-sm start-search">
+            <button
+              type="button"
+              id="search-btn"
+              class="btn btn-primary btn-sm"
+            >
               <svg
                 width="1em"
                 height="1em"
@@ -56,9 +60,7 @@
               </svg>
               Search
             </button>
-            <div class="citylist">
-              Put cities here from local storage
-            </div>
+            <ul id="city-list" class="list-group"></ul>
           </div>
           <div class="col-md-9">
             <h2>Weather Report</h2>
